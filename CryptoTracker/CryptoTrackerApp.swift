@@ -11,7 +11,13 @@ import SwiftUI
 struct CryptoTrackerApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            
+            //NavigationView는 가장 상단에 설정해주는 것이 좋다.
+            NavigationView{
+                HomeView()
+                .navigationBarHidden(true)
+            }
+           
         }
     }
 }
