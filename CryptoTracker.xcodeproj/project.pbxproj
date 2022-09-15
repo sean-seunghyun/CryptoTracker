@@ -19,6 +19,7 @@
 		14E1BA6228D1DDE30029AE57 /* CoinRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E1BA6128D1DDE30029AE57 /* CoinRowView.swift */; };
 		14E1BA6428D1DE0D0029AE57 /* PreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E1BA6328D1DE0D0029AE57 /* PreviewProvider.swift */; };
 		14E1BA6628D1E43D0029AE57 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E1BA6528D1E43D0029AE57 /* Double.swift */; };
+		14E1BA6828D2B3430029AE57 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E1BA6728D2B3430029AE57 /* HomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		14E1BA6128D1DDE30029AE57 /* CoinRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinRowView.swift; sourceTree = "<group>"; };
 		14E1BA6328D1DE0D0029AE57 /* PreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProvider.swift; sourceTree = "<group>"; };
 		14E1BA6528D1E43D0029AE57 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		14E1BA6728D2B3430029AE57 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 		14E1BA5528D196350029AE57 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				14E1BA6728D2B3430029AE57 /* HomeViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				14E1BA6228D1DDE30029AE57 /* CoinRowView.swift in Sources */,
+				14E1BA6828D2B3430029AE57 /* HomeViewModel.swift in Sources */,
 				14E1BA4428D1818F0029AE57 /* ContentView.swift in Sources */,
 				14E1BA5828D1965F0029AE57 /* HomeView.swift in Sources */,
 				14E1BA4228D1818F0029AE57 /* CryptoTrackerApp.swift in Sources */,

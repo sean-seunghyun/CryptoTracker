@@ -14,14 +14,15 @@ struct ContentView: View {
             VStack{
                 Text("text 1")
                     .foregroundColor(Color.theme.accent)
+                    .font(.caption)
                 Text("text 2")
                     .foregroundColor(Color.theme.green)
                 Text("text 3")
                     .foregroundColor(Color.theme.red)
                 Text("text 4")
                     .foregroundColor(Color.theme.secondaryText)
-
             }
+            .font(.title2)
         }
         
     }

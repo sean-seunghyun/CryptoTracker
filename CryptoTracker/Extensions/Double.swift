@@ -16,6 +16,7 @@ extension Double{
         formatter.usesGroupingSeparator = true
         formatter.maximumFractionDigits = 2
         formatter.minimumFractionDigits = 2
+        formatter.currencySymbol = "$"
         return formatter
     }
     

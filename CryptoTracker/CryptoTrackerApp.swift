@@ -9,6 +9,8 @@ import SwiftUI
 
 @main
 struct CryptoTrackerApp: App {
+    @StateObject var vm: HomeViewModel = HomeViewModel()
+    
     var body: some Scene {
         WindowGroup {
             
@@ -17,7 +19,7 @@ struct CryptoTrackerApp: App {
                 HomeView()
                 .navigationBarHidden(true)
             }
-           
+            .environmentObject(vm)
         }
     }
 }
