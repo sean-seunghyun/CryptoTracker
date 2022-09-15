@@ -25,6 +25,7 @@
 		14E1BA7128D2FED50029AE57 /* CoinImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E1BA7028D2FED50029AE57 /* CoinImageView.swift */; };
 		14E1BA7328D2FEE00029AE57 /* CoinImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E1BA7228D2FEE00029AE57 /* CoinImageViewModel.swift */; };
 		14E1BA7528D3001F0029AE57 /* CoinImageDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E1BA7428D3001F0029AE57 /* CoinImageDataService.swift */; };
+		14E1BA7728D3247E0029AE57 /* LocalFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E1BA7628D3247E0029AE57 /* LocalFileManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		14E1BA7028D2FED50029AE57 /* CoinImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinImageView.swift; sourceTree = "<group>"; };
 		14E1BA7228D2FEE00029AE57 /* CoinImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinImageViewModel.swift; sourceTree = "<group>"; };
 		14E1BA7428D3001F0029AE57 /* CoinImageDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinImageDataService.swift; sourceTree = "<group>"; };
+		14E1BA7628D3247E0029AE57 /* LocalFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				14E1BA6D28D2ED480029AE57 /* NetworkingManager.swift */,
+				14E1BA7628D3247E0029AE57 /* LocalFileManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 				14E1BA6B28D2C4FC0029AE57 /* CoinDataService.swift in Sources */,
 				14E1BA6228D1DDE30029AE57 /* CoinRowView.swift in Sources */,
 				14E1BA6828D2B3430029AE57 /* HomeViewModel.swift in Sources */,
+				14E1BA7728D3247E0029AE57 /* LocalFileManager.swift in Sources */,
 				14E1BA4428D1818F0029AE57 /* ContentView.swift in Sources */,
 				14E1BA5828D1965F0029AE57 /* HomeView.swift in Sources */,
 				14E1BA7128D2FED50029AE57 /* CoinImageView.swift in Sources */,
