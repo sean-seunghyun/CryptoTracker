@@ -89,6 +89,7 @@ extension HomeView{
             
         }
         .listStyle(PlainListStyle())
+        .padding()
     }
     
     private var portfolioCoinsList: some View{
@@ -101,6 +102,7 @@ extension HomeView{
             
         }
         .listStyle(PlainListStyle())
+        .padding()
     }
     
     private var listCaption: some View{

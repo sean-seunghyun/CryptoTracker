@@ -43,7 +43,7 @@ extension CoinRowView{
                 .fontWeight(.bold)
                 .foregroundColor(Color.theme.secondaryText)
                 .frame(minWidth: 30)
-            Circle()
+            CoinImageView(coin: coin)
                 .frame(width: 30, height: 30)
             Text(coin.symbol.uppercased())
                 .font(.headline)
@@ -72,6 +72,6 @@ extension CoinRowView{
                     Color.theme.red)
         }
         // portrait mode로만 설정해놨기 때문에 사용 가능. 그렇지 않으면 Geometry Reader 사용해야 함
-        .frame(width: UIScreen.main.bounds.width / 3.5)
+        .frame(width: UIScreen.main.bounds.width / 3.5, alignment: .trailing)
     }
 }
