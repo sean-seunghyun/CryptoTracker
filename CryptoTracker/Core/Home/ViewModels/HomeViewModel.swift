@@ -4,17 +4,25 @@
 //
 //  Created by sean on 2022/09/15.
 //
-
+import Combine
 import Foundation
 
 class HomeViewModel: ObservableObject{
     @Published var allCoins: [Coin] = []
     @Published var portfolioCoins: [Coin] = []
     
+    var dataService = CoinDataService.instance
+    var cancellables = Set<AnyCancellable>()
+    
     init(){
-        DispatchQueue.main.asyncAfter(deadline: .now()+2.0) {
-            self.allCoins = [DeveloperPreview.instance.coin]
-            self.portfolioCoins = [DeveloperPreview.instance.coin]
-        }
+        addSubscribers()
+    }
+    
+    func addSubscribers(){
+        dataService.$allCoins
+            .sink { [weak self] receivedCoins in
+                self?.allCoins = receivedCoins
+            }
+            .store(in: &cancellables)
     }
 }

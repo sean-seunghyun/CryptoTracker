@@ -19,29 +19,16 @@ struct HomeView: View {
                 header
                 //minLength를 0으로 설정해서 0이 될 수 있게끔 설정.
                 Spacer(minLength: 0)
+                
+                listCaption
+                
                 if !showPortfolio{
-                    List{
-                        
-                        ForEach(vm.allCoins) { coin in
-                            CoinRowView(coin: coin, showHoldingsColumn: true)
-                                .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 0))
-                        }
-                        
-                    }
-                    .listStyle(PlainListStyle())
+                    allCoinsList
                     .transition(.move(edge: .leading))
                 }
                 
                 if showPortfolio{
-                    List{
-                        
-                        ForEach(vm.allCoins) { coin in
-                            CoinRowView(coin: coin, showHoldingsColumn: true)
-                                .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 0))
-                        }
-                        
-                    }
-                    .listStyle(PlainListStyle())
+                    portfolioCoinsList
                     .transition(.move(edge: .trailing))
                     
                 }
@@ -92,4 +79,42 @@ extension HomeView{
         }.padding()
     }
     
+    private var allCoinsList: some View{
+        List{
+            
+            ForEach(vm.allCoins) { coin in
+                CoinRowView(coin: coin, showHoldingsColumn: false)
+                    .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 0))
+            }
+            
+        }
+        .listStyle(PlainListStyle())
+    }
+    
+    private var portfolioCoinsList: some View{
+        List{
+            
+            ForEach(vm.allCoins) { coin in
+                CoinRowView(coin: coin, showHoldingsColumn: true)
+                    .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 0))
+            }
+            
+        }
+        .listStyle(PlainListStyle())
+    }
+    
+    private var listCaption: some View{
+        HStack(spacing: 0){
+            Text("Coin")
+            Spacer()
+            if showPortfolio{
+                Text("Holdings")
+            }
+            Text("Price")
+                .frame(width: UIScreen.main.bounds.width / 3.5, alignment: .trailing)
+        }
+        .padding(.horizontal)
+        .foregroundColor(Color.theme.secondaryText)
+        .font(.caption)
+    }
 }
