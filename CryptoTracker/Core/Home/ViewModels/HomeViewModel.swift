@@ -10,6 +10,7 @@ import Foundation
 class HomeViewModel: ObservableObject{
     @Published var allCoins: [Coin] = []
     @Published var portfolioCoins: [Coin] = []
+    @Published var searchBarText:String = ""
     
     var dataService = CoinDataService.instance
     var cancellables = Set<AnyCancellable>()

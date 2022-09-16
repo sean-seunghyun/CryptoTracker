@@ -17,6 +17,8 @@ struct HomeView: View {
                 .ignoresSafeArea()
             VStack{
                 header
+                
+                SearchBarView(textFieldText: $vm.searchBarText)
                 //minLength를 0으로 설정해서 0이 될 수 있게끔 설정.
                 Spacer(minLength: 0)
                 
@@ -84,12 +86,12 @@ extension HomeView{
             
             ForEach(vm.allCoins) { coin in
                 CoinRowView(coin: coin, showHoldingsColumn: false)
-                    .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 0))
+                    .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 10))
             }
             
         }
         .listStyle(PlainListStyle())
-        .padding()
+        
     }
     
     private var portfolioCoinsList: some View{
@@ -97,12 +99,12 @@ extension HomeView{
             
             ForEach(vm.allCoins) { coin in
                 CoinRowView(coin: coin, showHoldingsColumn: true)
-                    .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 0))
+                    .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 10))
             }
             
         }
         .listStyle(PlainListStyle())
-        .padding()
+        
     }
     
     private var listCaption: some View{
