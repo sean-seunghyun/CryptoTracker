@@ -218,4 +218,8 @@ class DeveloperPreview{
                           ]),
                           priceChangePercentage24HInCurrency: 3952.64,
                           currentHoldings: 1.5)
+    
+    let stat1 = Statistics(title: "stat_title1", value: "0.52", percentageChange: 0.2)
+    let stat2 = Statistics(title: "stat_title2", value: "0.21")
+    let stat3 = Statistics(title: "stat_title3", value: "0.5", percentageChange: -0.2)
 }

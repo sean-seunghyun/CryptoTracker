@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject var vm:HomeViewModel
     @State private var showPortfolio: Bool = false
+    @State private var showEditPortfolio: Bool = false
     
     var body: some View {
         ZStack{
@@ -17,6 +18,8 @@ struct HomeView: View {
                 .ignoresSafeArea()
             VStack{
                 header
+                
+                HomeStatsView(showPortfolio: $showPortfolio)
                 
                 SearchBarView(textFieldText: $vm.searchBarText)
                 //minLength를 0으로 설정해서 0이 될 수 있게끔 설정.
@@ -37,6 +40,12 @@ struct HomeView: View {
                 
             }
         }
+        // sheet를 생성해줄 때는 environmentObject를 새로 추가해줘야 한다.
+        .sheet(isPresented: $showEditPortfolio){
+            PortfolioView()
+                .environmentObject(vm)
+        }
+     
     }
 }
 
@@ -47,7 +56,7 @@ struct HomeView_Previews: PreviewProvider {
             //.environmentObject(HomeViewModel())
                 .environmentObject(dev.vm)
                 .navigationBarHidden(true)
-            //            .preferredColorScheme(.dark)
+                .preferredColorScheme(.dark)
         }
         
     }
@@ -63,6 +72,9 @@ extension HomeView{
                 .background(
                     CircleButtonAnimationView(isAnimate: $showPortfolio)
                 )
+                .onTapGesture {
+                    showEditPortfolio.toggle()
+                }
             Spacer()
             Text(showPortfolio ? "Portfolio" : "Live Prices")
                 .font(.headline)
@@ -76,9 +88,10 @@ extension HomeView{
                     withAnimation(.easeIn) {
                         showPortfolio.toggle()
                     }
-                    
                 }
-        }.padding()
+        }
+        .padding()
+        
     }
     
     private var allCoinsList: some View{
