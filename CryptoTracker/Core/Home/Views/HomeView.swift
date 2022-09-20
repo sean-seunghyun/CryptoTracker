@@ -11,7 +11,6 @@ struct HomeView: View {
     @EnvironmentObject var vm:HomeViewModel
     @State private var showPortfolio: Bool = false
     @State private var showEditPortfolio: Bool = false
-    
     var body: some View {
         ZStack{
             Color.theme.background
@@ -110,7 +109,7 @@ extension HomeView{
     private var portfolioCoinsList: some View{
         List{
             
-            ForEach(vm.allCoins) { coin in
+            ForEach(vm.portfolioCoins) { coin in
                 CoinRowView(coin: coin, showHoldingsColumn: true)
                     .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 10))
             }
@@ -129,6 +128,15 @@ extension HomeView{
             }
             Text("Price")
                 .frame(width: UIScreen.main.bounds.width / 3.5, alignment: .trailing)
+                .padding(.trailing)
+            Image(systemName: "goforward")
+                
+                .onTapGesture {
+                    withAnimation(.linear(duration: 2.0)){
+                        vm.reloadData()
+                    }
+                }
+                .rotationEffect(Angle(degrees: vm.isLoading ? 360 : 0), anchor: .center)
         }
         .padding(.horizontal)
         .foregroundColor(Color.theme.secondaryText)
