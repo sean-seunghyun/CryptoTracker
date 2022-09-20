@@ -111,7 +111,7 @@ struct Coin: Identifiable, Codable, Equatable {
         return currentPrice * (currentHoldings ?? 0)
     }
     
-    func rank() -> Int{
+    var rank:Int{
        return Int(marketCapRank ?? 0)
     }
     
