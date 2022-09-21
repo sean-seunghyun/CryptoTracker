@@ -11,6 +11,9 @@ struct HomeView: View {
     @EnvironmentObject var vm:HomeViewModel
     @State private var showPortfolio: Bool = false
     @State private var showEditPortfolio: Bool = false
+    @State private var showDetailView: Bool = false
+    @State private var selectedCoin:Coin? = nil
+    
     var body: some View {
         ZStack{
             Color.theme.background
@@ -44,7 +47,17 @@ struct HomeView: View {
             PortfolioView()
                 .environmentObject(vm)
         }
-     
+        .background(
+            NavigationLink(isActive: $showDetailView) {
+                // selectCoin을 바로 넣으면 변화된 것을 tracking하지 못하고,
+                // 돌아오면 다시 nil을 해주는 등 해줘야 할 것이 많은데
+                // 만약 binding을 해주면 자동으로 값이 바뀔 수 있다.
+                DetailLoadingView(coin: $selectedCoin)
+            } label: {
+                EmptyView()
+            }
+        )
+        
     }
 }
 
@@ -99,6 +112,10 @@ extension HomeView{
             ForEach(vm.allCoins) { coin in
                 CoinRowView(coin: coin, showHoldingsColumn: false)
                     .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 10))
+                    .onTapGesture {
+                        selectedCoin = coin
+                        showDetailView = true
+                    }
             }
             
         }
