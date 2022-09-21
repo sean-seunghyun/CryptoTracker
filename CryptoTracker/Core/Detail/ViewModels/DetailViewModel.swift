@@ -92,7 +92,6 @@ class DetailViewModel: ObservableObject{
         let blockTimeStat = Statistics(title: "Block Time", value: blockTimeString)
         
         let hashingAlgorithm = coinDetail?.hashingAlgorithm ?? "n/a"
-        print(hashingAlgorithm)
         let hashingAlgorithmStat = Statistics(title: "Hashing Algorithm", value: hashingAlgorithm)
         
         additionalStatistics.append(contentsOf: [highStat, lowStat, priceChangeStat, marketCapChangeStat, blockTimeStat, hashingAlgorithmStat])

@@ -40,8 +40,8 @@ struct DetailView: View {
         
         ScrollView{
             VStack{
-                  Text("")
-                    .frame(height: 150)
+                ChartView(coin: coin)
+                    .padding(.bottom, 20)
                 
                 Text("Overview")
                     .bold()
@@ -76,6 +76,18 @@ struct DetailView: View {
             .padding()
         }
         .navigationTitle(coin.name)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                HStack{
+                    Text(coin.symbol.uppercased())
+                        .font(.subheadline)
+                        .foregroundColor(Color.theme.secondaryText)
+                    CoinImageView(coin: coin)
+                        .frame(width: 25, height: 25)
+                }
+                
+            }
+        }
     }
 }
 
