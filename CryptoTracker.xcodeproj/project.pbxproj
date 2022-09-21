@@ -44,6 +44,7 @@
 		14E1BA9F28DAA8AC0029AE57 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E1BA9E28DAA8AC0029AE57 /* DetailViewModel.swift */; };
 		14E1BAA328DAE6330029AE57 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E1BAA228DAE6330029AE57 /* ChartView.swift */; };
 		14E1BAA528DAFA0D0029AE57 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E1BAA428DAFA0D0029AE57 /* Date.swift */; };
+		14E1BAA728DB09080029AE57 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E1BAA628DB09080029AE57 /* String.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +86,7 @@
 		14E1BA9E28DAA8AC0029AE57 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		14E1BAA228DAE6330029AE57 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		14E1BAA428DAFA0D0029AE57 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		14E1BAA628DB09080029AE57 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 				14E1BA6528D1E43D0029AE57 /* Double.swift */,
 				14E1BA7A28D4119B0029AE57 /* UIApplication.swift */,
 				14E1BAA428DAFA0D0029AE57 /* Date.swift */,
+				14E1BAA628DB09080029AE57 /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 				14E1BA6428D1DE0D0029AE57 /* PreviewProvider.swift in Sources */,
 				14E1BAA328DAE6330029AE57 /* ChartView.swift in Sources */,
 				14E1BA9228D9AB430029AE57 /* HapticManager.swift in Sources */,
+				14E1BAA728DB09080029AE57 /* String.swift in Sources */,
 				14E1BA8728D8369B0029AE57 /* PortfolioView.swift in Sources */,
 				14E1BA6628D1E43D0029AE57 /* Double.swift in Sources */,
 				14E1BA7D28D45B920029AE57 /* Statistics.swift in Sources */,

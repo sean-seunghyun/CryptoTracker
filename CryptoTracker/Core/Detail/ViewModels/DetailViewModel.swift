@@ -13,6 +13,9 @@ class DetailViewModel: ObservableObject{
     @Published var coin: Coin
     @Published var overviewStatistics: [Statistics] = []
     @Published var additionalStatistics: [Statistics] = []
+    @Published var coinDescription: String? = nil
+    @Published var websiteURL: String? = nil
+    @Published var redditURL: String? = nil
     
     private var coinDetailDataService: CoinDetailDataService
     private var cancellables = Set<AnyCancellable>()
@@ -34,6 +37,16 @@ class DetailViewModel: ObservableObject{
             .sink { [weak self] (overview, additional)  in
                 self?.overviewStatistics = overview
                 self?.additionalStatistics = additional
+            }
+            .store(in: &cancellables)
+        
+        
+        // coinDetail에 대해서 두번 subscription 하지만 이렇게 하는게 더 깔끔해서 두번 한다.
+        coinDetailDataService.$coinDetail
+            .sink { [weak self] coinDetail in
+                self?.coinDescription = coinDetail?.description?.en
+                self?.websiteURL = coinDetail?.links?.homepage?.first
+                self?.redditURL = coinDetail?.links?.subredditURL
             }
             .store(in: &cancellables)
     }
