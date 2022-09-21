@@ -31,12 +31,12 @@ struct HomeView: View {
                 
                 if !showPortfolio{
                     allCoinsList
-                    .transition(.move(edge: .leading))
+                        .transition(.move(edge: .leading))
                 }
                 
                 if showPortfolio{
                     portfolioCoinsList
-                    .transition(.move(edge: .trailing))
+                        .transition(.move(edge: .trailing))
                     
                 }
                 
@@ -74,9 +74,9 @@ struct HomeView_Previews: PreviewProvider {
     }
 }
 
-
+// MARK: - COMPONENTS
 extension HomeView{
-    // MARK: - COMPONENTS
+    
     private var header: some View{
         HStack{
             CircleButtonView(iconName: showPortfolio ? "plus" : "info")
@@ -113,8 +113,8 @@ extension HomeView{
                 CoinRowView(coin: coin, showHoldingsColumn: false)
                     .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 10))
                     .onTapGesture {
-                        selectedCoin = coin
-                        showDetailView = true
+                        segue(coin: coin)
+                        
                     }
             }
             
@@ -129,6 +129,9 @@ extension HomeView{
             ForEach(vm.portfolioCoins) { coin in
                 CoinRowView(coin: coin, showHoldingsColumn: true)
                     .listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 10))
+                    .onTapGesture {
+                        segue(coin: coin)
+                    }
             }
             
         }
@@ -141,7 +144,7 @@ extension HomeView{
             HStack {
                 Text("Coin")
                 Image(systemName: "chevron.down")
-                    
+                
                     .opacity(vm.sortOption == .rank || vm.sortOption == .rankReversed ? 1.0 : 0.0)
                     .rotationEffect(Angle(degrees: vm.sortOption == .rank ? 0 : 180))
             }
@@ -155,7 +158,7 @@ extension HomeView{
                 HStack {
                     Text("Holdings")
                     Image(systemName: "chevron.down")
-                        
+                    
                         .opacity(vm.sortOption == .holdings || vm.sortOption == .holdingsReversed ? 1.0 : 0.0)
                         .rotationEffect(Angle(degrees: vm.sortOption == .holdings ? 0 : 180))
                 }
@@ -169,7 +172,7 @@ extension HomeView{
                 Text("Price")
                     .frame(width: UIScreen.main.bounds.width / 3.5, alignment: .trailing)
                 Image(systemName: "chevron.down")
-                    
+                
                     .opacity(vm.sortOption == .price || vm.sortOption == .priceReversed ? 1.0 : 0.0)
                     .rotationEffect(Angle(degrees: vm.sortOption == .price ? 0 : 180))
                 
@@ -181,7 +184,7 @@ extension HomeView{
             }
             .padding(.trailing)
             Image(systemName: "goforward")
-                
+            
                 .onTapGesture {
                     withAnimation(.linear(duration: 2.0)){
                         vm.reloadData()
@@ -192,5 +195,15 @@ extension HomeView{
         .padding(.horizontal)
         .foregroundColor(Color.theme.secondaryText)
         .font(.caption)
+    }
+}
+
+
+// MARK: - FUNCTIONS
+extension HomeView{
+    
+    func segue(coin: Coin){
+        selectedCoin = coin
+        showDetailView = true
     }
 }

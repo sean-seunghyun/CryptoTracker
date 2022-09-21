@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+
+
 struct CoinRowView: View {
     
     let coin: Coin

@@ -10,11 +10,10 @@ import SwiftUI
 struct StatisticView: View {
     let stat:Statistics
     var body: some View {
-        VStack(alignment: .trailing, spacing: 4){
+        VStack(alignment: .leading, spacing: 4){
             Text(stat.title)
                 .font(.caption)
                 .foregroundColor(Color.theme.secondaryText)
-//            Text(stat.value.asPercentString())
             Text(stat.value)
                 .font(.headline)
                 .foregroundColor(Color.theme.accent)

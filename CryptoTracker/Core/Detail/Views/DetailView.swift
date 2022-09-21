@@ -22,19 +22,67 @@ struct DetailLoadingView: View{
 }
 
 struct DetailView: View {
-    let coin: Coin
+    private let coin: Coin
+    @StateObject private var vm: DetailViewModel
     
     init(coin: Coin){
         self.coin = coin
+        _vm = StateObject(wrappedValue: DetailViewModel(coin: coin))
     }
     
     var body: some View {
-        Text(coin.name)
+        
+        let columns: [GridItem] = [
+                GridItem(.flexible()),
+                GridItem(.flexible())
+        ]
+        let spacing:CGFloat = 40
+        
+        ScrollView{
+            VStack{
+                  Text("")
+                    .frame(height: 150)
+                
+                Text("Overview")
+                    .bold()
+                    .font(.title)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Divider()
+                
+                LazyVGrid(
+                    columns: columns,
+                    alignment: .leading,
+                    spacing: spacing,
+                    pinnedViews: []) {
+                    ForEach(vm.overviewStatistics){ stat in
+                        StatisticView(stat: stat)
+                    }
+                }
+                
+                Text("Additional Details")
+                    .bold()
+                    .font(.title)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Divider()
+                
+                LazyVGrid(columns: columns, alignment: .leading, spacing: spacing, pinnedViews: []) {
+                    ForEach(vm.additionalStatistics) { stat in
+                        StatisticView(stat: stat)
+
+                    }
+                }
+
+            }
+            .padding()
+        }
+        .navigationTitle(coin.name)
     }
 }
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView(coin: dev.coin)
+        NavigationView {
+            DetailView(coin: dev.coin)
+        }
     }
 }
