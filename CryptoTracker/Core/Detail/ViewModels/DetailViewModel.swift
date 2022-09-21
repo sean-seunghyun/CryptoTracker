@@ -11,11 +11,13 @@ import Combine
 class DetailViewModel: ObservableObject{
     
     @Published var coin: Coin
-    var coinDetailDataService: CoinDetailDataService
-    var cancellables = Set<AnyCancellable>()
+    @Published var overviewStatistics: [Statistics] = []
+    @Published var additionalStatistics: [Statistics] = []
     
-    var overviewStatistics: [Statistics] = []
-    var additionalStatistics: [Statistics] = []
+    private var coinDetailDataService: CoinDetailDataService
+    private var cancellables = Set<AnyCancellable>()
+    
+    
     
     
     init(coin: Coin){
@@ -89,8 +91,9 @@ class DetailViewModel: ObservableObject{
         let blockTimeString = blockTime != 0 ? String(blockTime) : "n/a"
         let blockTimeStat = Statistics(title: "Block Time", value: blockTimeString)
         
-        let hashingAlgorithm = coinDetail?.hashingAlgorithm
-        let hashingAlgorithmStat = Statistics(title: "Hashing Algorithm", value: hashingAlgorithm ?? "n/a")
+        let hashingAlgorithm = coinDetail?.hashingAlgorithm ?? "n/a"
+        print(hashingAlgorithm)
+        let hashingAlgorithmStat = Statistics(title: "Hashing Algorithm", value: hashingAlgorithm)
         
         additionalStatistics.append(contentsOf: [highStat, lowStat, priceChangeStat, marketCapChangeStat, blockTimeStat, hashingAlgorithmStat])
         
