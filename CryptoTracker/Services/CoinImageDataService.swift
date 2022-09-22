@@ -45,6 +45,8 @@ class CoinImageDataService{
         // 이미지는 decode할 필요 없음
         // 대신 tryMap으로 UIImage로 변환해주기
             .tryMap({UIImage(data: $0)})
+            .receive(on: DispatchQueue.main) // decoing까지 background 스레드에서 진행, 이후에 main스레드에서 계속 작업
+
             .sink(receiveCompletion: NetworkingManager.handleCompletion, receiveValue: { [weak self] returnedImage in
                 guard
                     let self = self,

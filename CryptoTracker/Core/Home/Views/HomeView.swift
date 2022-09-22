@@ -36,8 +36,12 @@ struct HomeView: View {
                 }
                 
                 if showPortfolio{
-                    portfolioCoinsList
-                        .transition(.move(edge: .trailing))
+                    if(!vm.portfolioCoins.isEmpty || !vm.searchBarText.isEmpty){
+                        portfolioCoinsList
+                            .transition(.move(edge: .trailing))
+                    }else{
+                        noPortfolioCoinsText
+                    }
                     
                 }
                 
@@ -143,6 +147,7 @@ extension HomeView{
                     .onTapGesture {
                         segue(coin: coin)
                     }
+                
             }
             
         }
@@ -206,6 +211,18 @@ extension HomeView{
         .padding(.horizontal)
         .foregroundColor(Color.theme.secondaryText)
         .font(.caption)
+    }
+    
+    private var noPortfolioCoinsText: some View{
+        VStack{
+            Text("There is no coins in your Portfolio... Please add coins you have.🤔 ")
+                .multilineTextAlignment(.center)
+                .frame(width: 250)
+                .padding(.top)
+                .foregroundColor(Color.theme.accent)
+                
+            Spacer()
+        }
     }
 }
 

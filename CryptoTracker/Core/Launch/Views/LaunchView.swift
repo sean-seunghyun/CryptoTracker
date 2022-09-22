@@ -47,20 +47,17 @@ struct LaunchView: View {
         })
         .onReceive(timer) { _ in
             withAnimation(.spring()){
-                
-                
                 if count > loadingString.count{
                     count = 0
                     loop += 1
                     
-                    if loop == 2{
+                    if loop == 1{
                         print("loop \(loop)")
                         showLaunchView.toggle()
                     }
                 }else{
                     count += 1
                 }
-                print(count)
             }
         }
     }
