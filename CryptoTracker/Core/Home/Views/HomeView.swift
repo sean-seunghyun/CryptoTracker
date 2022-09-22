@@ -12,6 +12,7 @@ struct HomeView: View {
     @State private var showPortfolio: Bool = false
     @State private var showEditPortfolio: Bool = false
     @State private var showDetailView: Bool = false
+    @State private var showSettingsView: Bool = false
     @State private var selectedCoin:Coin? = nil
     
     var body: some View {
@@ -40,6 +41,11 @@ struct HomeView: View {
                     
                 }
                 
+            }
+            // 동일한 hierarchy 내에 두개 이상의 multiple sheets는 불가능함.
+            // 그러나 여기서는 VStack에 하나, 그 밖에 ZStack에 하나이므로 가능함.
+            .sheet(isPresented: $showSettingsView) {
+                SettingsView()
             }
         }
         // sheet를 생성해줄 때는 environmentObject를 새로 추가해줘야 한다.
@@ -85,7 +91,12 @@ extension HomeView{
                     CircleButtonAnimationView(isAnimate: $showPortfolio)
                 )
                 .onTapGesture {
-                    showEditPortfolio.toggle()
+                    if showPortfolio{
+                        showEditPortfolio.toggle()
+                    }else{
+                        showSettingsView.toggle()
+                    }
+                    
                 }
             Spacer()
             Text(showPortfolio ? "Portfolio" : "Live Prices")
